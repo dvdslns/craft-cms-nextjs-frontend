@@ -10,6 +10,10 @@ async function getEntries() {
         id
         title
         slug
+        featureImage {
+          id
+          url
+        }
       }
     }
   }
@@ -21,9 +25,10 @@ async function getEntries() {
 export default async function PostListing() {
   const blogsData = await getEntries();
   return (
-    <div className="grid grid-cols-4 gap-8">
+    <div className="grid grid-cols-3 gap-8">
       {blogsData.blogEntries.map((entry: BlogEntry) => {
-        return <PostCard key={entry.id} title={entry.title} slug={entry.slug} />;
+        
+        return <PostCard key={entry.id} title={entry.title} slug={entry.slug} featureImageId={entry.id} featureImageUrl={entry.featureImage[0].url} />;
       })}
     </div>
   );

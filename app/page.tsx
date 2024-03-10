@@ -5,13 +5,13 @@ import EntriesSkeleton from "./_components/ui/Skeletons/EntriesSkeleton";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <main className="max-w-screen-xl container mx-auto p-20 flex min-h-screen flex-col">
 
         <h1 className="text-8xl font-bold py-20 max-w-2xl">This website is running CraftCMS + NextJS 14</h1>
         <Suspense fallback={<EntriesSkeleton />}>
           <PostListing />
         </Suspense>
       
-    </div>
+    </main>
   );
 }
