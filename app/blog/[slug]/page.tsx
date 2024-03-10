@@ -2,7 +2,7 @@ import { fetchData } from "@/app/_lib/data";
 import { BlogEntry } from "@/app/_lib/definitions";
 import AnimatedImage from "@/app/_components/AnimatedImage";
 import Link from "next/link";
-import  { PostTitle, PostWrapper } from "@/app/_components/PostComponents";
+import  { PostTitle, PostWrapper, PostContent } from "@/app/_components/PostComponents";
 
 export async function generateStaticParams() {
   const response = await fetchData(
@@ -34,6 +34,20 @@ export default async function Entry({ params }: { params: { slug: string } }) {
             id
             url
           }
+          postContent {
+            ... on postContent_text_BlockType {
+              id
+              typeHandle
+              text
+            }
+            ... on postContent_image_BlockType {
+              id
+              typeHandle
+              image {
+                url
+              }
+            }
+          }
         }
       }
     }`
@@ -50,8 +64,10 @@ export default async function Entry({ params }: { params: { slug: string } }) {
         />
       </div>
 
-      <PostWrapper className="max-w-screen-xl container mx-auto flex flex-col">
+      <PostWrapper className="max-w-prose mx-auto flex flex-col">
         <PostTitle>{entryData.entry.title}</PostTitle>
+
+        <PostContent postContentData={entryData.entry.postContent} />
 
         <Link href="/" scroll={false} className="underline">
           go back{" "}
