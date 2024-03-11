@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import Image from "next/image";
 import PostListing from "@/app/_components/PostListing";
 import EntriesSkeleton from "./_components/ui/Skeletons/EntriesSkeleton";
 
