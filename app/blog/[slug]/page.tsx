@@ -32,6 +32,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
           slug
           featureImage {
             id
+            alt
             url
           }
           postContent {
@@ -44,6 +45,8 @@ export default async function Entry({ params }: { params: { slug: string } }) {
               id
               typeHandle
               image {
+                id
+                alt
                 url
               }
             }
@@ -61,15 +64,16 @@ export default async function Entry({ params }: { params: { slug: string } }) {
         <AnimatedImage
           id={entryData.entry.id}
           src={entryData.entry.featureImage[0].url}
+          alt={entryData.entry.featureImage[0].alt}
         />
       </div>
 
-      <PostWrapper className="max-w-prose mx-auto flex flex-col">
+      <PostWrapper className="max-w-prose mx-auto flex flex-col post-wrapper py-20">
         <PostTitle>{entryData.entry.title}</PostTitle>
 
         <PostContent postContentData={entryData.entry.postContent} />
 
-        <Link href="/" scroll={false} className="underline">
+        <Link href="/" className="underline">
           go back{" "}
         </Link>
       </PostWrapper>

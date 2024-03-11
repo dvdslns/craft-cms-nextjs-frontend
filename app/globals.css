@@ -74,3 +74,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+.post-wrapper {
+  @apply text-lg;
+}
+
+.post-block__text {
+  p {
+    @apply mb-6;
+  }
+}

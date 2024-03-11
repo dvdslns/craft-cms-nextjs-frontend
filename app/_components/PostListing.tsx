@@ -12,6 +12,7 @@ async function getEntries() {
         slug
         featureImage {
           id
+          alt
           url
         }
       }
@@ -27,8 +28,16 @@ export default async function PostListing() {
   return (
     <div className="grid grid-cols-3 gap-8">
       {blogsData.blogEntries.map((entry: BlogEntry) => {
-        
-        return <PostCard key={entry.id} title={entry.title} slug={entry.slug} featureImageId={entry.id} featureImageUrl={entry.featureImage[0].url} />;
+        return (
+          <PostCard
+            key={entry.id}
+            title={entry.title}
+            slug={entry.slug}
+            featureImageId={entry.featureImage[0].id}
+            featureImageAlt={entry.featureImage[0].alt}
+            featureImageUrl={entry.featureImage[0].url}
+          />
+        );
       })}
     </div>
   );

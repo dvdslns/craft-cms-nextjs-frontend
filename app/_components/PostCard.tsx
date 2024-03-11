@@ -15,17 +15,19 @@ export default async function PostCard({
   slug,
   featureImageUrl,
   featureImageId,
+  featureImageAlt,
 }: {
   title: string;
   slug: string;
   featureImageUrl: string;
   featureImageId: string;
+  featureImageAlt: string;
 }) {
   return (
     <Card className="flex flex-col">
       <CardHeader>
-        <Link href={`/blog/${slug}`} scroll={false}>
-          <AnimatedImage id={featureImageId} src={featureImageUrl} />
+        <Link href={`/blog/${slug}`}>
+          <AnimatedImage id={featureImageId} src={featureImageUrl} alt={featureImageAlt} isThumb />
         </Link>
         <CardTitle>
           <Link scroll={false} href={`/blog/${slug}`}>
@@ -38,7 +40,7 @@ export default async function PostCard({
         <p>Card Content</p>
       </CardContent>
       <CardFooter className="mt-auto">
-        <Link href={`/blog/${slug}`} scroll={false}>
+        <Link href={`/blog/${slug}`}>
           <Button>Read More</Button>
         </Link>
       </CardFooter>

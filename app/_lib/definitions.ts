@@ -5,6 +5,7 @@ export interface BlogEntry {
   featureImage: {
       url: string;
       id: string;
+      alt: string;
   }[];
 }
 export interface ContentBlock {
